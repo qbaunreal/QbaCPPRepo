@@ -40,22 +40,22 @@ void MainNamespace::SelectSection()
 	switch (Selection)
 	{
 	case 'x':
-		ConstructFromClass<Section6>();
+		Section6::Execute();
 		ConstructFromClass<Section7>();
-		ConstructFromClass<Section8>();
-		ConstructFromClass<Section9>();
+		Section8::Execute();
+		Section9::Execute();
 		break;
 	case 'a':
-		ConstructFromClass<Section6>();
+		Section6::Execute();
 		break;
 	case 'b':
 		ConstructFromClass<Section7>();
 		break;
 	case 'c':
-		ConstructFromClass<Section8>();
+		Section8::Execute();
 		break;
 	case 'd':
-		ConstructFromClass<Section9>();
+		Section9::Execute();
 		break;
 	default:
 		break;

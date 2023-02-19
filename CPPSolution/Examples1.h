@@ -6,10 +6,10 @@
 class Section6
 {
 public:
-	Section6();
+	static void Execute();
 
 private:
-	void CalculateRoomPrice();
+	static void CalculateRoomPrice();
 };
 
 /* Arrays and vectors */
@@ -34,37 +34,35 @@ private:
 		};
 		char CharArray[5]{ 'a', 'b', 'c', 'd', 'e' };
 	};
-
-
 };
 
 /* Statements and operators */
 class Section8
 {
 public:
-	Section8();
+	static void Execute();
 
 private:
-	void Increment();
-	void MixedTypeExpressions();
-	void CheckEquality();
-	void CompoundAssignment();
-	void ChangeChallange();
+	static void Increment();
+	static void MixedTypeExpressions();
+	static void CheckEquality();
+	static void CompoundAssignment();
+	static void ChangeChallange();
 
-	int ChangeWithRate(int& InMoneyInCents, const int ExchangeRate);
+	static int ChangeWithRate(int& InMoneyInCents, const int ExchangeRate);
 };
 
 /* Flow Control */
 class Section9
 {
 public:
-	Section9();
+	static void Execute();
 
 private:
-	void IfPlayground();
-	void SwitchPlayground();
-	void ConditionalOperator();
-	void LoopPlayground();
-	void ReplaceCharactersInString();
+	static void IfPlayground();
+	static void SwitchPlayground();
+	static void ConditionalOperator();
+	static void LoopPlayground();
+	static void ReplaceCharactersInString();
 
 };

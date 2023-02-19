@@ -4,7 +4,7 @@
 
 namespace MainNamespace 
 {
-	void SelectSection();
+	static void SelectSection();
 }
 
 
@@ -12,6 +12,5 @@ namespace MainNamespace
 	My TODO for this CPP course:
 	Get better at templating
 	Try to make delegates lambdas etc
-	static classes, functions and variables
-	static structs / structs in general
+	static functions and variables
 */

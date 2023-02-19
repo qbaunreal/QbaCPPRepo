@@ -6,52 +6,11 @@
 using namespace SharedTemplates;
 using namespace std;
 
-Section6::Section6()
+
+void Section6::Execute()
 {
 	cout << "~~~~~~~~~~~ Section 6 ~~~~~~~~~~~~" << endl;
 	CalculateRoomPrice();
-	cout << "~~~~~~~~~~~~~~~~~~" << endl;
-	cout << "~~~~~~~~~~~ End of Section ~~~~~~~~~~~~" << endl << endl;
-}
-
-
-Section7::Section7()
-{
-	cout << "~~~~~~~~~~~ Section 7 ~~~~~~~~~~~~" << endl;
-	PrintAllArraysAndVectors();
-	cout << "~~~~~~~~~~~~~~~~~~" << endl;
-	cout << "~~~~~~~~~~~ End of Section ~~~~~~~~~~~~" << endl << endl;
-}
-
-
-Section8::Section8()
-{
-	cout << "~~~~~~~~~~~ Section 8 ~~~~~~~~~~~~" << endl;
-	Increment();
-	cout << "~~~~~~~~~~~~~~~~~~" << endl;
-	MixedTypeExpressions();
-	cout << "~~~~~~~~~~~~~~~~~~" << endl;
-	CheckEquality();
-	cout << "~~~~~~~~~~~~~~~~~~" << endl;
-	CompoundAssignment();
-	cout << "~~~~~~~~~~~~~~~~~~" << endl;
-	ChangeChallange();
-	cout << "~~~~~~~~~~~~~~~~~~" << endl;
-	cout << "~~~~~~~~~~~ End of Section ~~~~~~~~~~~~" << endl << endl;
-}
-
-Section9::Section9()
-{
-	cout << "~~~~~~~~~~~ Section 9 ~~~~~~~~~~~~" << endl;
-	IfPlayground();
-	cout << "~~~~~~~~~~~~~~~~~~" << endl;
-	SwitchPlayground();
-	cout << "~~~~~~~~~~~~~~~~~~" << endl;
-	ConditionalOperator();
-	cout << "~~~~~~~~~~~~~~~~~~" << endl;
-	LoopPlayground();
-	cout << "~~~~~~~~~~~~~~~~~~" << endl;
-	ReplaceCharactersInString();
 	cout << "~~~~~~~~~~~~~~~~~~" << endl;
 	cout << "~~~~~~~~~~~ End of Section ~~~~~~~~~~~~" << endl << endl;
 }
@@ -76,6 +35,14 @@ void Section6::CalculateRoomPrice()
 	cout << "Tax: " << Tax << endl;
 	cout << "Total Price: " << TotalPrice << endl;
 	cout << "This estimate is valid for: " << EstimateDays << " days." << endl;
+}
+
+Section7::Section7()
+{
+	cout << "~~~~~~~~~~~ Section 7 ~~~~~~~~~~~~" << endl;
+	PrintAllArraysAndVectors();
+	cout << "~~~~~~~~~~~~~~~~~~" << endl;
+	cout << "~~~~~~~~~~~ End of Section ~~~~~~~~~~~~" << endl << endl;
 }
 
 void Section7::PrintAllArraysAndVectors()
@@ -125,6 +92,22 @@ void Section7::PrintAllArraysAndVectors()
 	Print2DVectorElems(TwoDimensionalVector);
 }
 
+void Section8::Execute()
+{
+	cout << "~~~~~~~~~~~ Section 8 ~~~~~~~~~~~~" << endl;
+	Increment();
+	cout << "~~~~~~~~~~~~~~~~~~" << endl;
+	MixedTypeExpressions();
+	cout << "~~~~~~~~~~~~~~~~~~" << endl;
+	CheckEquality();
+	cout << "~~~~~~~~~~~~~~~~~~" << endl;
+	CompoundAssignment();
+	cout << "~~~~~~~~~~~~~~~~~~" << endl;
+	ChangeChallange();
+	cout << "~~~~~~~~~~~~~~~~~~" << endl;
+	cout << "~~~~~~~~~~~ End of Section ~~~~~~~~~~~~" << endl << endl;
+}
+
 void Section8::Increment()
 {
 	cout << "This example shows pre-increment and post-increment effect on value " << endl;
@@ -141,7 +124,6 @@ void Section8::Increment()
 	cout << "PreIncrement: " << PreIncrementInt << endl;
 	cout << "PostIncrement: " << PostIncrementInt << endl;
 }
-
 
 void Section8::MixedTypeExpressions()
 {
@@ -325,6 +307,22 @@ int Section8::ChangeWithRate(int& InMoneyInCents, const int ExchangeRate)
 	return MoneyToGive;
 }
 
+
+void Section9::Execute()
+{
+	cout << "~~~~~~~~~~~ Section 9 ~~~~~~~~~~~~" << endl;
+	IfPlayground();
+	cout << "~~~~~~~~~~~~~~~~~~" << endl;
+	SwitchPlayground();
+	cout << "~~~~~~~~~~~~~~~~~~" << endl;
+	ConditionalOperator();
+	cout << "~~~~~~~~~~~~~~~~~~" << endl;
+	LoopPlayground();
+	cout << "~~~~~~~~~~~~~~~~~~" << endl;
+	ReplaceCharactersInString();
+	cout << "~~~~~~~~~~~~~~~~~~" << endl;
+	cout << "~~~~~~~~~~~ End of Section ~~~~~~~~~~~~" << endl << endl;
+}
 
 void Section9::IfPlayground()
 {
