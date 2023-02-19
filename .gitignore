@@ -10,6 +10,8 @@
 # Precompiled Headers
 *.gch
 *.pch
+*.ipch
+
 
 # Compiled Dynamic libraries
 *.so
@@ -35,3 +37,13 @@
 # Binary Files
 x64/*
 CPPSolution/x64/*
+
+# Others
+*.suo
+*.VC.db
+*.VC.opendb
+*.lock
+*.VC.db-shm
+*.VC.db-wal
+*.vsidx
+

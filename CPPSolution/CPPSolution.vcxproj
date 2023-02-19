@@ -135,6 +135,7 @@
   <ItemGroup>
     <ClInclude Include="CPPSolution.h" />
     <ClInclude Include="Examples1.h" />
+    <ClInclude Include="SharedTemplates.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

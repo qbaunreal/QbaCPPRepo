@@ -1,18 +1,17 @@
 #pragma once
 
 
-template<class T>
-void ConstructSectionFromClass()
+namespace MainNamespace 
 {
-	T* Section = new T();
-	delete Section;
+	void SelectSection();
 }
 
 
 
-// My TODO for this CPP course:
-// Get better at templating
-// Try to make delegates
-// static classes, functions and variables
-// static structs / structs in general
-// 
+/* 
+	My TODO for this CPP course:
+	Get better at templating
+	Try to make delegates lambdas etc
+	static classes, functions and variables
+	static structs / structs in general
+*/
