@@ -4,6 +4,7 @@
 #include "SharedTemplates.h"
 
 using namespace SharedTemplates;
+using namespace std;
 
 Section6::Section6()
 {
@@ -99,7 +100,10 @@ void Section7::PrintAllArraysAndVectors()
 		break;
 	}
 
-	if (!bAllowExecution) return;
+	if (!bAllowExecution)
+	{
+		return;
+	}
 
 	cout << "------ Printing Arrays ---------" << endl;
 	TestArrays Section7Array = TestArrays();
@@ -172,13 +176,28 @@ void Section8::CheckEquality()
 
 	cout << boolalpha;
 
-	if (bIsAEqualToB) cout << "A is equal to B: " << bIsAEqualToB << endl;
-	else if (bIsAGreaterThanB) cout << "A is greater than B: " << bIsAGreaterThanB << endl;
+	if (bIsAEqualToB)
+	{
+		cout << "A is equal to B: " << bIsAEqualToB << endl;
+	}
+	else if (bIsAGreaterThanB)
+	{
+		cout << "A is greater than B: " << bIsAGreaterThanB << endl;
+	}
 	
-	else cout << "B is greater than A: " << !bIsAGreaterThanB << endl;
+	else 
+	{
+		cout << "B is greater than A: " << !bIsAGreaterThanB << endl;
+	}
 	
-	if (NumberA > 0 && NumberB > 0) cout << "Both numbers are positive " << endl;
-	else if (NumberA > 0 || NumberB > 0) cout << "At least one of the numbers is positive " << endl;
+	if (NumberA > 0 && NumberB > 0)
+	{
+		cout << "Both numbers are positive " << endl;
+	}
+	else if (NumberA > 0 || NumberB > 0) 
+	{ 
+		cout << "At least one of the numbers is positive " << endl; 
+	}
 }
 
 void Section8::CompoundAssignment()
@@ -427,7 +446,10 @@ void Section9::LoopPlayground()
 	{
 		bool bMeetsTestCondition = i%3 == 0 && i%7 == 0 && i%11 == 0;
 	
-		if (bMeetsTestCondition) NumbersThatMeetCondition.push_back(i);
+		if (bMeetsTestCondition)
+		{
+			NumbersThatMeetCondition.push_back(i);
+		}
 	}
 	
 	cout << "Numbers that meet the testing condition are: " << endl;
@@ -466,10 +488,13 @@ void Section9::ReplaceCharactersInString()
 	}
 	while (!bFoundCharacterInWord);
 
-	for (int i = 0; i < WordToProcess.length(); i++)
+	for (char& Character : WordToProcess)
 	{
-		if (WordToProcess[i] == CharacterToChange) WordToProcess[i] = TargetCharacter;
+		if (Character == CharacterToChange) 
+		{ 
+			Character = TargetCharacter; 
+		}
 	}
-	
+
 	cout << "Your new word is: " << WordToProcess << endl;
 }
