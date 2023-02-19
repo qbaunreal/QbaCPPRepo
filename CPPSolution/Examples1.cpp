@@ -1,3 +1,4 @@
+// Copyright Jakub Urbanek. All Rights Reserved.
 
 #include "Examples1.h"
 #include "SharedTemplates.h"

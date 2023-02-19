@@ -1,8 +1,8 @@
+// Copyright Jakub Urbanek. All Rights Reserved.
+
 #pragma once
 
 /* Examples1 contains sections 1-9 of the course*/
-
-
 class Section6
 {
 public:

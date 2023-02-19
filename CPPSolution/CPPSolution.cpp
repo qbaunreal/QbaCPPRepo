@@ -1,5 +1,4 @@
-// CPPSolution.cpp : This file contains the 'main' function. Program execution begins and ends there.
-//
+// Copyright Jakub Urbanek. All Rights Reserved.
 
 #include "CPPSolution.h"
 #include "Examples1.h"

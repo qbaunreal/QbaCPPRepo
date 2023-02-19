@@ -1,11 +1,11 @@
-#pragma once
+// Copyright Jakub Urbanek. All Rights Reserved.
 
+#pragma once
 
 namespace MainNamespace 
 {
 	void SelectSection();
 }
-
 
 
 /* 
