@@ -1,6 +1,7 @@
 // Copyright Jakub Urbanek. All Rights Reserved.
 
 #pragma once
+#include <vector>
 
 /* Examples1 contains sections 1-9 of the course*/
 class Section6
@@ -55,8 +56,10 @@ private:
 /* Flow Control */
 class Section9
 {
+
 public:
 	static void Execute();
+	static void Challenge();
 
 private:
 	static void IfPlayground();
@@ -64,5 +67,22 @@ private:
 	static void ConditionalOperator();
 	static void LoopPlayground();
 	static void ReplaceCharactersInString();
+	static void FindNextFibonacciNumber();
 
+	/* Section challenge */
+	static void PrintChallangeMenu();
+	static void ChallengePrintNumbers();
+	static void ChallengeAddNumber();
+	static void ChallengeDisplayMean();
+
+	enum NumberType : int
+	{
+		Smallest,
+		Biggest
+	};
+	static void ChallengeShowSmallestBiggest(NumberType NumberToChoose);
+
+
+	static inline std::vector<int> ChallengeNumbers{1,2};
+	static inline bool bIsChallengeFinished{false};
 };

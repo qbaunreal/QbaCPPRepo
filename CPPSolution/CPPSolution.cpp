@@ -16,7 +16,7 @@ int main()
 void MainNamespace::SelectSection()
 {
 	char Selection{'.'};
-	char AvailableChoices[]{'x','a','b','c','d', 'e', 'f', 'g', 'h'};
+	const char AvailableChoices[]{ 'x','X','a','A','b','B','c','C','d','D', 'e','E', 'f','F', 'g','G','h', 'H'};
 
 	bool bUserSelectedProperChar{false};
 	do
@@ -27,6 +27,7 @@ void MainNamespace::SelectSection()
 		cout << "b. Section7 - Arrays and vectors" << endl;
 		cout << "c. Section8 - Statements and operators" << endl;
 		cout << "d. Section9 - Flow Control" << endl;
+		cout << "	e. Section9 - Challenge" << endl;
 		
 		cin >> Selection;
 		bUserSelectedProperChar = ArrayContainsItem(Selection, AvailableChoices);
@@ -40,22 +41,31 @@ void MainNamespace::SelectSection()
 	switch (Selection)
 	{
 	case 'x':
+	case 'X':
 		Section6::Execute();
 		ConstructFromClass<Section7>();
 		Section8::Execute();
 		Section9::Execute();
 		break;
 	case 'a':
+	case 'A':
 		Section6::Execute();
 		break;
 	case 'b':
+	case 'B':
 		ConstructFromClass<Section7>();
 		break;
 	case 'c':
+	case 'C':
 		Section8::Execute();
 		break;
 	case 'd':
+	case 'D':
 		Section9::Execute();
+		break;
+	case 'e':
+	case 'E':
+		Section9::Challenge();
 		break;
 	default:
 		break;

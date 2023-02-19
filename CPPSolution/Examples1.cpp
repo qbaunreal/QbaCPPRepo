@@ -321,6 +321,10 @@ void Section9::Execute()
 	cout << "~~~~~~~~~~~~~~~~~~" << endl;
 	ReplaceCharactersInString();
 	cout << "~~~~~~~~~~~~~~~~~~" << endl;
+	FindNextFibonacciNumber();
+	cout << "~~~~~~~~~~~~~~~~~~" << endl;
+	Challenge();
+	cout << "~~~~~~~~~~~~~~~~~~" << endl;
 	cout << "~~~~~~~~~~~ End of Section ~~~~~~~~~~~~" << endl << endl;
 }
 
@@ -496,3 +500,217 @@ void Section9::ReplaceCharactersInString()
 
 	cout << "Your new word is: " << WordToProcess << endl;
 }
+
+void Section9::FindNextFibonacciNumber()
+{
+	cout << "This example finds next Fibonacci number after entered number which can be also divided by 2. " << endl;
+	cout << "uses infinite loop that was made on purpouse of demonstating break and continue behaviour " << endl;
+
+	int NumberToCheck;
+	InputValueGreaterThan(NumberToCheck, 0, "Please enter an int number: ");
+
+	vector<int> FibonacciNumbers{0,1};
+	
+	int CurrentIndex{2};
+
+	while (true)
+	{
+		int NumberAtCurrentIndex = FibonacciNumbers[CurrentIndex -1] + FibonacciNumbers[CurrentIndex -2];
+		
+		bool bValueFitInInt = NumberAtCurrentIndex < INT_MAX && NumberAtCurrentIndex > 0;
+
+		if (!bValueFitInInt)
+		{
+			cout << "Exceeded int size, did not find your value ";
+			break;
+		}
+
+		bool bFoundRequiredNumber = NumberAtCurrentIndex > NumberToCheck && NumberAtCurrentIndex % 2 == 0;
+		
+		if(!bFoundRequiredNumber)
+		{
+			FibonacciNumbers.push_back(NumberAtCurrentIndex);
+			CurrentIndex++;
+			continue;
+		}
+		else
+		{
+			cout << "The number you're looking for is: " << NumberAtCurrentIndex << endl;
+			break;
+		}	
+	}
+}
+
+void Section9::Challenge()
+{
+	while (!bIsChallengeFinished)
+	{
+		PrintChallangeMenu();
+	}
+}
+
+void Section9::PrintChallangeMenu()
+{
+	char Selection{ '.' };
+	const char AvailableChoices[]{ 'p','P','a','A','m','M','s', 'S', 'l', 'L', 'q','Q'};
+
+	bool bUserSelectedProperChar{ false };
+	do
+	{
+		cout << "-------------------------------------------------" << endl;
+		cout << "Please choose what this program does: " << endl;
+		cout << "p. Print Numbers. " << endl;
+		cout << "a. Add Numbers. " << endl;
+		cout << "m. Display mean of the numbers. " << endl;
+		cout << "s. Display the smallest number" << endl;
+		cout << "l. Display the largest number" << endl;
+		cout << "q. Quit" << endl;
+		cout << "-------------------------------------------------" << endl;
+
+		cin >> Selection;
+		bUserSelectedProperChar = ArrayContainsItem(Selection, AvailableChoices);
+		if (!bUserSelectedProperChar)
+		{
+			cout << "Please select a valid section" << endl;
+		}
+
+	} while (!bUserSelectedProperChar);
+
+	switch (Selection)
+	{
+	case 'p':
+	case 'P':
+		ChallengePrintNumbers();
+		break;
+	case 'a':
+	case 'A':
+		ChallengeAddNumber();
+		break;
+	case 'm':
+	case 'M':
+		ChallengeDisplayMean();
+		break;
+	case 's':
+	case 'S':
+		ChallengeShowSmallestBiggest(NumberType::Smallest);
+		break;
+	case 'l':
+	case 'L':
+		ChallengeShowSmallestBiggest(NumberType::Biggest);
+		break;
+	case 'q':
+	case 'Q':
+		cout << "Ok. Exiting the program. " << endl;
+		bIsChallengeFinished = true;
+		break;
+	default:
+		break;
+	}
+}
+
+
+void Section9::ChallengePrintNumbers()
+{
+	bool bIsVectorEmpty = ChallengeNumbers.size() == 0;
+	if (bIsVectorEmpty)
+	{
+		cout << "Vector of numbers is empty, going back to menu. " << endl;
+		return;
+	}
+
+	for (int Number : ChallengeNumbers)
+	{
+		cout << Number << endl;
+	}
+}
+
+void Section9::ChallengeAddNumber()
+{
+	cout << "Enter the number you want to add: " << endl;
+	int Number{0};
+	SafeCin(Number);
+	ChallengeNumbers.push_back(Number);
+}
+
+void Section9::ChallengeDisplayMean()
+{
+	float Average{0.f};
+	int Sum{0};
+	size_t ElementsCount{0};
+	ElementsCount = ChallengeNumbers.size();
+
+	bool bIsVectorEmpty = ElementsCount == 0;
+	if (bIsVectorEmpty)
+	{
+		cout << "Vector of numbers is empty, going back to menu. " << endl;
+		return;
+	}
+
+	for (int Number : ChallengeNumbers)
+	{
+		Sum += Number;
+	}
+
+	Average = static_cast<float>(Sum) / ElementsCount;
+	cout << "Average of the vector is: " << Average << endl;
+}
+
+void Section9::ChallengeShowSmallestBiggest(NumberType NumberToChoose)
+{
+	const bool bIsVectorEmpty = ChallengeNumbers.size() == 0;
+	if (bIsVectorEmpty)
+	{
+		cout << "Vector of numbers is empty, going back to menu. " << endl;
+		return;
+	}
+
+	vector<int> NumbersToIterateOn = ChallengeNumbers;
+	
+	int ResultNumber {-1};
+	
+	while (NumbersToIterateOn.size() > 1)
+	{
+		size_t i = NumbersToIterateOn.size() - 1;
+		for (i; i > 0; i--)
+		{
+			bool bMeetsRequiredCondition{false};
+
+			switch (NumberToChoose)
+			{
+			case Smallest:
+				bMeetsRequiredCondition = NumbersToIterateOn[0] >= NumbersToIterateOn[i];
+				break;
+			case Biggest:
+				bMeetsRequiredCondition = NumbersToIterateOn[0] <= NumbersToIterateOn[i];
+				break;
+			default:
+				break;
+			}
+
+			if (bMeetsRequiredCondition)
+			{
+				ResultNumber = NumbersToIterateOn[i];
+				NumbersToIterateOn.erase(NumbersToIterateOn.begin());
+				break;
+			}
+			else
+			{
+				ResultNumber = NumbersToIterateOn[0];
+				NumbersToIterateOn.pop_back();
+			}
+		}
+	}
+
+	switch (NumberToChoose)
+	{
+	case Smallest:
+		cout << "The smallest number is: " << ResultNumber << endl;
+		break;
+	case Biggest:
+		cout << "The biggest number is: " << ResultNumber << endl;
+		break;
+	default:
+		break;
+	}
+}
+
