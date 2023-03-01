@@ -17,6 +17,9 @@
     <ClCompile Include="Examples1.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Examples2.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CPPSolution.h">
@@ -27,6 +30,9 @@
     </ClInclude>
     <ClInclude Include="SharedTemplates.h">
       <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Examples2.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

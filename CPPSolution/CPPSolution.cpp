@@ -2,6 +2,7 @@
 
 #include "CPPSolution.h"
 #include "Examples1.h"
+#include "Examples2.h"
 #include "SharedTemplates.h"
 
 using namespace SharedTemplates;
@@ -28,6 +29,9 @@ void MainNamespace::SelectSection()
 		cout << "c. Section8 - Statements and operators" << endl;
 		cout << "d. Section9 - Flow Control" << endl;
 		cout << "	e. Section9 - Challenge" << endl;
+		cout << "f. Section10 - Strings" << endl;
+		cout << "g. Section11 - Functions" << endl;
+		cout << "h. Section12 - Pointers and References" << endl;
 		
 		cin >> Selection;
 		bUserSelectedProperChar = ArrayContainsItem(Selection, AvailableChoices);
@@ -46,6 +50,9 @@ void MainNamespace::SelectSection()
 		ConstructFromClass<Section7>();
 		Section8::Execute();
 		Section9::Execute();
+		Section10::Execute();
+		Section11::Execute();
+		ConstructFromClass<Section12>();
 		break;
 	case 'a':
 	case 'A':
@@ -67,6 +74,15 @@ void MainNamespace::SelectSection()
 	case 'E':
 		Section9::Challenge();
 		break;
+	case 'f':
+	case 'F':
+		Section10::Execute();
+	case'g':
+	case'G':
+		Section11::Execute();
+	case'h':
+	case'H':
+		ConstructFromClass<Section12>();
 	default:
 		break;
 	}

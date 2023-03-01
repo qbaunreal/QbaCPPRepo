@@ -17,10 +17,10 @@ void Section6::Execute()
 
 void Section6::CalculateRoomPrice()
 {
-	cout << "This example calculates price for given amount of rooms. " << endl;
-	const unsigned int EstimateDays{ 30 };
-	const float PricePerRoom{ 30.f };
-	const float TaxRate{ 0.06f };
+	cout << "This example calculates price for given number of rooms. " << endl;
+	const unsigned int EstimateDays {30};
+	const float PricePerRoom {30.f};
+	const float TaxRate {0.06f};
 
 	int NumberOfRooms{};
 
@@ -40,14 +40,14 @@ void Section6::CalculateRoomPrice()
 Section7::Section7()
 {
 	cout << "~~~~~~~~~~~ Section 7 ~~~~~~~~~~~~" << endl;
-	PrintAllArraysAndVectors();
+	PrintArraysAndVectors();
 	cout << "~~~~~~~~~~~~~~~~~~" << endl;
 	cout << "~~~~~~~~~~~ End of Section ~~~~~~~~~~~~" << endl << endl;
 }
 
-void Section7::PrintAllArraysAndVectors()
+void Section7::PrintArraysAndVectors()
 {
-	cout << "This example prints all elements of arrays and vectors. " << endl;
+	cout << "This example prints all elements of pre-exising arrays and vectors. " << endl;
 	char ContinueChar;
 	cout << "Press Y/N to print arrays .. ";
 	SafeCin(ContinueChar);
@@ -73,16 +73,16 @@ void Section7::PrintAllArraysAndVectors()
 	}
 
 	cout << "------ Printing Arrays ---------" << endl;
-	TestArrays Section7Array = TestArrays();
+	TestArrays Section7Array;
 	PrintArrayElems(Section7Array.TestFloatArray1);
 	Print2DArrayElems(Section7Array.MultiDimension);
 	PrintArrayElems(Section7Array.CharArray);
 
 	cout << "------ Printing 1d Vectors ---------" << endl;
-	vector <float> SomeVectorRecord{ 2,1,3,7 };
+	vector<float> SomeVectorRecord{ 2,1,3,7 };
 	SomeVectorRecord.push_back(2137);
 	PrintVectorElems(SomeVectorRecord);
-	vector <float> OtherVector(10, 21.37f);
+	vector<float> OtherVector(10, 21.37f);
 	PrintVectorElems(OtherVector);
 
 	cout << "------ Printing 2d Vectors ---------" << endl;
@@ -95,7 +95,7 @@ void Section7::PrintAllArraysAndVectors()
 void Section8::Execute()
 {
 	cout << "~~~~~~~~~~~ Section 8 ~~~~~~~~~~~~" << endl;
-	Increment();
+	PrePostIncrement();
 	cout << "~~~~~~~~~~~~~~~~~~" << endl;
 	MixedTypeExpressions();
 	cout << "~~~~~~~~~~~~~~~~~~" << endl;
@@ -108,7 +108,7 @@ void Section8::Execute()
 	cout << "~~~~~~~~~~~ End of Section ~~~~~~~~~~~~" << endl << endl;
 }
 
-void Section8::Increment()
+void Section8::PrePostIncrement()
 {
 	cout << "This example shows pre-increment and post-increment effect on value " << endl;
 	int BaseValue {0};
@@ -121,8 +121,8 @@ void Section8::Increment()
 
 	const int PostIncrementInt = CurrentValue++;
 
-	cout << "PreIncrement: " << PreIncrementInt << endl;
-	cout << "PostIncrement: " << PostIncrementInt << endl;
+	cout << "PreIncrement result: " << PreIncrementInt << endl;
+	cout << "PostIncrement result: " << PostIncrementInt << endl;
 }
 
 void Section8::MixedTypeExpressions()
@@ -146,10 +146,10 @@ void Section8::MixedTypeExpressions()
 
 void Section8::CheckEquality()
 {
-	cout << "This example checks if numbers are equal and which one is greater. Then check if they are positve " << endl;
+	cout << "This example checks if numbers are equal and tells which one is bigger. Then check if they are positve " << endl;
 	int NumberA {2137};
 	int NumberB {2137};
-	cout << "Enter integers: NumberA and NumberB separated by space: " << endl;
+	cout << "Enter two integers: " << endl;
 	SafeCin(NumberA);
 	SafeCin(NumberB);
 
@@ -184,7 +184,7 @@ void Section8::CheckEquality()
 
 void Section8::CompoundAssignment()
 {
-	cout << "This example shows effect of compount assigmnet on two values " << endl;
+	cout << "This example shows effect of compound assignment on two values " << endl;
 	cout << boolalpha;
 
 	int DefaultValue {5};
@@ -437,21 +437,26 @@ void Section9::ConditionalOperator()
 
 void Section9::LoopPlayground()
 {
-	cout << "This example prints checks if X numbers can be divided by 3, 7 and 11" << endl;
+	cout << "This example prints X numbers that can be divided by 3, 7 and 11" << endl;
 
 	int LoopSize;
 	cout << "Enter max numbers to check: " << endl;
 	SafeCin(LoopSize);
 	vector<int> NumbersThatMeetCondition{};
-
-	for (int i = 1; i <= LoopSize; i++)
+	
+	bool bFoundAllNumbers {false};
+	int Iteration {1};
+	while(!bFoundAllNumbers)
 	{
-		bool bMeetsTestCondition = i%3 == 0 && i%7 == 0 && i%11 == 0;
+		bool bMeetsTestCondition = Iteration %3 == 0 && Iteration %7 == 0 && Iteration %11 == 0;
 	
 		if (bMeetsTestCondition)
 		{
-			NumbersThatMeetCondition.push_back(i);
+			NumbersThatMeetCondition.push_back(Iteration);
 		}
+		
+		bFoundAllNumbers = NumbersThatMeetCondition.size() == LoopSize && Iteration < INT_MAX;
+		Iteration++;
 	}
 	
 	cout << "Numbers that meet the testing condition are: " << endl;
@@ -465,7 +470,7 @@ void Section9::LoopPlayground()
 
 void Section9::ReplaceCharactersInString()
 {
-	cout << "This example replaces all letters in word to other character" << endl;
+	cout << "This example replaces all selected letters in a word to x" << endl;
 	const char TargetCharacter = 'x';
 
 	string WordToProcess = "HelloWorld";
@@ -503,7 +508,7 @@ void Section9::ReplaceCharactersInString()
 
 void Section9::FindNextFibonacciNumber()
 {
-	cout << "This example finds next Fibonacci number after entered number which can be also divided by 2. " << endl;
+	cout << "This example finds next even Fibonacci number after entered number. " << endl;
 	cout << "uses infinite loop that was made on purpouse of demonstating break and continue behaviour " << endl;
 
 	int NumberToCheck;
@@ -559,8 +564,8 @@ void Section9::PrintChallangeMenu()
 	{
 		cout << "-------------------------------------------------" << endl;
 		cout << "Please choose what this program does: " << endl;
-		cout << "p. Print Numbers. " << endl;
-		cout << "a. Add Numbers. " << endl;
+		cout << "p. Print vector Numbers. " << endl;
+		cout << "a. Add Numbers to vector. " << endl;
 		cout << "m. Display mean of the numbers. " << endl;
 		cout << "s. Display the smallest number" << endl;
 		cout << "l. Display the largest number" << endl;
@@ -701,16 +706,6 @@ void Section9::ChallengeShowSmallestBiggest(NumberType NumberToChoose)
 		}
 	}
 
-	switch (NumberToChoose)
-	{
-	case Smallest:
-		cout << "The smallest number is: " << ResultNumber << endl;
-		break;
-	case Biggest:
-		cout << "The biggest number is: " << ResultNumber << endl;
-		break;
-	default:
-		break;
-	}
+	cout << "The number you are searching for is: " << ResultNumber << endl;
 }
 

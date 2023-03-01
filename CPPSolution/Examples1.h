@@ -19,9 +19,8 @@ class Section7
 public:
 	Section7();
 
-	void PrintAllArraysAndVectors();
-
 private:
+	void PrintArraysAndVectors();
 	struct TestArrays
 	{
 		int TestArray1[5]{0};
@@ -44,7 +43,7 @@ public:
 	static void Execute();
 
 private:
-	static void Increment();
+	static void PrePostIncrement();
 	static void MixedTypeExpressions();
 	static void CheckEquality();
 	static void CompoundAssignment();
@@ -80,9 +79,9 @@ private:
 		Smallest,
 		Biggest
 	};
-	static void ChallengeShowSmallestBiggest(NumberType NumberToChoose);
+	static void ChallengeShowSmallestBiggest(NumberType NumberToChoose = Smallest);
 
 
-	static inline std::vector<int> ChallengeNumbers{1,2};
+	static inline std::vector<int> ChallengeNumbers{};
 	static inline bool bIsChallengeFinished{false};
 };

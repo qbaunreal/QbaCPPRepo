@@ -106,7 +106,10 @@ namespace SharedTemplates
 
 		for (int i = 0; i < ArrayLenght; i++)
 		{
-			if (ItemToFind == Array[i]) return true;
+			if (ItemToFind == Array[i])
+			{
+				return true;
+			}
 		}
 		return false;
 	}
