@@ -300,11 +300,11 @@ void Section8::ChangeChallange()
 /* as far as i know Int by ref is bad, but i want to change the InMoneyInCents in this function. 
 Is there something that could be done better? only thing i fugured out is to make it a global variable but I'm not sure which one is better to have
 */
-int Section8::ChangeWithRate(int& InMoneyInCents, const int ExchangeRate)
+int Section8::ChangeWithRate(int& CurrentCents, const int ExchangeRate)
 {
-	int MoneyToGive = InMoneyInCents / ExchangeRate;
-	InMoneyInCents %= ExchangeRate;
-	return MoneyToGive;
+	const int MoneyToReturn = CurrentCents / ExchangeRate;
+	CurrentCents %= ExchangeRate;
+	return MoneyToReturn;
 }
 
 

@@ -60,14 +60,16 @@ private:
 	void GetAdressOfPtr() const;
 	void ArraySubscriptOffsetNotation() const;
 	void IncrementArrayPtr() const;
+	void ConstPtrs() const;
+	void PassByRefPtrExample() const;
+	void PassByRefPtr(int* const IntPtr) const;
+	void ReturnPtrsExample() const;
+	const int* FindLargerInt(const int* IntPtrA, const int* IntPtrB) const;
+	int* CreateArrayPtr(int Size, int InitValue = 0) const;
+	void PtrSectionChallenge() const;
+	const int* const ApplyAllChallenge(const int* const ArrayA, int ArrayASize, const int* const ArrayB, int ArrayBSize) const;
+	void PrintArrayElemsChallenge(const int* const Array, int ArraySize) const;
 
 private:
-	Section12SubClass* S12SubPtr {nullptr};
 	int* UninitialisedPtr;
-};
-
-class Section12SubClass
-{
-public:
-	Section12SubClass();
 };

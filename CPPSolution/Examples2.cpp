@@ -370,17 +370,22 @@ unsigned long long Section11::FindNFibonacci(int Number)
 
 Section12::Section12()
 {
-	cout << "~~~~~~~~~~~ Section 11 ~~~~~~~~~~~~" << endl;
+	cout << "~~~~~~~~~~~ Section 12 ~~~~~~~~~~~~" << endl;
 	GetAdressOfPtr();
 	cout << "~~~~~~~~~~~~~~~~~~" << endl;
 	ArraySubscriptOffsetNotation();
 	cout << "~~~~~~~~~~~~~~~~~~" << endl;
 	IncrementArrayPtr();
 	cout << "~~~~~~~~~~~~~~~~~~" << endl;
+	ConstPtrs();
+	cout << "~~~~~~~~~~~~~~~~~~" << endl;
+	PassByRefPtrExample();
+	cout << "~~~~~~~~~~~~~~~~~~" << endl;
+	ReturnPtrsExample();
+	cout << "~~~~~~~~~~~~~~~~~~" << endl;
+	PtrSectionChallenge();
+	cout << "~~~~~~~~~~~~~~~~~~" << endl;
 	cout << "~~~~~~~~~~~ End of Section ~~~~~~~~~~~~" << endl << endl;
-	
-	S12SubPtr = new Section12SubClass();
-	delete S12SubPtr;
 }
 
 void Section12::GetAdressOfPtr() const
@@ -446,7 +451,147 @@ void Section12::IncrementArrayPtr() const
 	}
 }
 
-Section12SubClass::Section12SubClass()
+void Section12::ConstPtrs() const
 {
-	cout << "I was created from the section 12 class  " << endl;
+	cout << "This example shows how pointers to const and const ptrs work" << endl;
+	int ExampleInt {2137};
+	int ExampleInt2 {42};
+
+	const int* PtrToConst {&ExampleInt};
+	cout << "const int* PtrToConst =  " << *PtrToConst <<endl;
+
+	//*PtrConst = 33; This produces error as expected
+	PtrToConst = &ExampleInt2;
+
+	int* const ConstPtr { &ExampleInt };
+	cout << "int* const ConstPtr = " << *ConstPtr << endl;
+
+	*ConstPtr = 33;
+	//ConstPtr = &ExampleInt2; This produces error as expected
+
+	const int* const ConstPtrToConst{ &ExampleInt };
+	cout << "const int* const ConstPtrToConst = " << *ConstPtr << endl;
+
+	//*ConstPtrToConst = 33;  This produces error as expected
+	//ConstPtrToConst = &ExampleInt2; This produces error as expected
+
 }
+
+void Section12::PassByRefPtrExample() const
+{
+	cout << "This example shows how to pass by ref ptrs (increments ptr value 10x twice)" << endl;
+	int BaseIntValue {0};
+	cout << "Please enter your base value" << endl;
+	SafeCin(BaseIntValue);
+
+	for (size_t i = 0; i < 10; i++)
+	{
+		PassByRefPtr(&BaseIntValue);
+	}
+
+	int* const NewIntPtr {&BaseIntValue};
+	cout << "Now doing the same loop for int* const NewIntPtr" << endl;
+	for (size_t i = 0; i < 10; i++)
+	{
+		PassByRefPtr(NewIntPtr);
+	}
+}
+
+void Section12::PassByRefPtr(int* const IntPtr) const
+{
+	++*IntPtr;
+	cout << "New ptr Value: " << *IntPtr << endl;
+}
+
+void Section12::ReturnPtrsExample() const
+{
+	cout << "This example shows how to returns ptrs out of a function" << endl;
+	
+	cout << "Please enter ValueA" << endl;
+	int ValueA {0};
+	SafeCin(ValueA);
+
+	cout << "Please enter ValueB" << endl;
+	int ValueB {0};
+	SafeCin(ValueB);
+
+	const int* LargerPtr = FindLargerInt(&ValueA, &ValueB);
+	cout << "LargerPtr value is: " << *LargerPtr << endl;
+	cout << "Now creating array of size of LargerPtr and initializing its values to SmallerPtr" << endl;
+	int* const NewArray = CreateArrayPtr(*LargerPtr, ValueB); //returns adress of first element in the array
+	
+	for (int i = 0; i < *LargerPtr; i++)
+	{
+		cout << "ArrayElem at " << i << " value is: " << *(NewArray + i) << endl; //Goes to next adress of size int
+	}
+	delete[] NewArray;
+
+	cout << "\n";
+}
+
+const int* Section12::FindLargerInt(const int* IntPtrA, const int* IntPtrB) const
+{
+	return *IntPtrA > *IntPtrB ? IntPtrA : IntPtrB;
+}
+
+int* Section12::CreateArrayPtr(int Size, int InitValue) const
+{
+	int* const NewArray = new int[Size];
+
+	for (int i = 0; i < Size; i++)
+	{
+		*(NewArray + i) = InitValue;
+	}
+	return NewArray;
+}
+
+void Section12::PtrSectionChallenge() const
+{
+	cout << "This example takes two arays and multiplies elems in ArrayA with elems in ArrayB: " << endl;
+	int ArrayA[]{1,2,3,4,5};
+	int ArrayB[]{10,20,30};
+	cout << "Array A: " << endl;
+	PrintArrayElemsChallenge(ArrayA, 5);
+	cout << "Array B: " << endl;
+	PrintArrayElemsChallenge(ArrayB, 3);
+
+	const int* const NewArray = ApplyAllChallenge(ArrayA, 5, ArrayB, 3);
+	cout << "NewArray (Array A * Array B)= " << endl;
+	PrintArrayElemsChallenge(NewArray, 15);
+	
+	delete [] NewArray;
+	cout << "\n";
+}
+
+
+
+const int* const Section12::ApplyAllChallenge(const int* const ArrayA, int ArrayASize, const int* const ArrayB, int ArrayBSize) const
+{
+	const int ArraySize = ArrayASize * ArrayBSize;
+	int* const NewArray = new int[ArraySize];
+	int IndexesAssigned {0};
+	for (int i = 0; i < ArrayASize; i++)
+	{
+		for (int j = 0; j < ArrayBSize; j++)
+		{
+			*(NewArray + IndexesAssigned) = ArrayA[i] * ArrayB[j];
+			IndexesAssigned++;
+		}
+	}
+		
+	return NewArray;
+}
+
+void Section12::PrintArrayElemsChallenge(const int* const Array, int ArraySize) const
+{
+	for (int i = 0; i < ArraySize; i++)
+	{
+		cout << *(Array + i);
+		if (i < ArraySize-1)
+		{
+			cout << ", ";
+		}
+	}
+	cout << "\n";
+}
+
