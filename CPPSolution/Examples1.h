@@ -7,7 +7,7 @@
 class Section6
 {
 public:
-	static void Execute();
+	static void Exec();
 
 private:
 	static void CalculateRoomPrice();
@@ -40,7 +40,7 @@ private:
 class Section8
 {
 public:
-	static void Execute();
+	static void Exec();
 
 private:
 	static void PrePostIncrement();
@@ -57,7 +57,7 @@ class Section9
 {
 
 public:
-	static void Execute();
+	static void Exec();
 	static void Challenge();
 
 private:
@@ -82,6 +82,6 @@ private:
 	static void ChallengeShowSmallestBiggest(NumberType NumberToChoose = Smallest);
 
 
-	static inline std::vector<int> ChallengeNumbers{};
-	static inline bool bIsChallengeFinished{false};
+	static std::vector<int> ChallengeNumbers;
+	static bool bIsChallengeFinished;
 };

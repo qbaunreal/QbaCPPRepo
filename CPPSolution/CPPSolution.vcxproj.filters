@@ -20,6 +20,12 @@
     <ClCompile Include="Examples2.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Examples3.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Examples4.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CPPSolution.h">
@@ -32,6 +38,12 @@
       <Filter>Source Files</Filter>
     </ClInclude>
     <ClInclude Include="Examples2.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Examples3.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Examples4.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

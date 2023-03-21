@@ -11,7 +11,7 @@
 using namespace SharedTemplates;
 using namespace std;
 
-void Section10::Execute()
+void Section10::Exec()
 {
 	cout << "~~~~~~~~~~~ Section 10 ~~~~~~~~~~~~" << endl;
 	CStyleFullNameExample();
@@ -171,7 +171,7 @@ void Section10::PyramidChallenge()
 	}
 }
 
-void Section11::Execute()
+void Section11::Exec()
 {
 	cout << "~~~~~~~~~~~ Section 11 ~~~~~~~~~~~~" << endl;
 	GetEvenNumbersInRand();
@@ -423,8 +423,8 @@ void Section12::ArraySubscriptOffsetNotation() const
 {
 	cout << "This example shows how to create a new array pointer and get offset from it. Numbers in array are: 1,2,3,4,5" << endl;
 	cout << "Compares Subscript and Offset notation" << endl;
-	int ArrayNumbers[]{1,2,3,4,5};
-	int* ArrayPtr = ArrayNumbers;
+	const int ArrayNumbers[]{1,2,3,4,5};
+	const int* ArrayPtr = ArrayNumbers;
 
 	//Subscript notation
 	cout << "Subscript Value[0]: " << ArrayPtr[0] << endl;
@@ -441,8 +441,8 @@ void Section12::IncrementArrayPtr() const
 {
 	cout << "This example Iterates arrayptr to display all array elems. Numbers in array are: 1,2,3,4,5" << endl;
 
-	int ArrayNumbers[]{ 1,2,3,4,5 };
-	int* ArrayPtr = ArrayNumbers;
+	const int ArrayNumbers[]{ 1,2,3,4,5 };
+	const int* ArrayPtr = ArrayNumbers;
 
 	const int ArrayLenght = sizeof(ArrayNumbers) / sizeof(int);
 	for (int i = 0; i < ArrayLenght; i++)
@@ -518,7 +518,7 @@ void Section12::ReturnPtrsExample() const
 	const int* LargerPtr = FindLargerInt(&ValueA, &ValueB);
 	cout << "LargerPtr value is: " << *LargerPtr << endl;
 	cout << "Now creating array of size of LargerPtr and initializing its values to SmallerPtr" << endl;
-	int* const NewArray = CreateArrayPtr(*LargerPtr, ValueB); //returns adress of first element in the array
+	int* NewArray = CreateArrayPtr(*LargerPtr, ValueB); //returns adress of first element in the array
 	
 	for (int i = 0; i < *LargerPtr; i++)
 	{
@@ -536,7 +536,7 @@ const int* Section12::FindLargerInt(const int* IntPtrA, const int* IntPtrB) cons
 
 int* Section12::CreateArrayPtr(int Size, int InitValue) const
 {
-	int* const NewArray = new int[Size];
+	int* NewArray = new int[Size];
 
 	for (int i = 0; i < Size; i++)
 	{
@@ -559,7 +559,7 @@ void Section12::PtrSectionChallenge() const
 	cout << "NewArray (Array A * Array B)= " << endl;
 	PrintArrayElemsChallenge(NewArray, 15);
 	
-	delete [] NewArray;
+	delete[] NewArray;
 	cout << "\n";
 }
 

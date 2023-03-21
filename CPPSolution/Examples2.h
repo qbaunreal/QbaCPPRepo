@@ -10,7 +10,7 @@
 class Section10
 {
 public:
-	static void Execute();
+	static void Exec();
 private:
 	static void CStyleFullNameExample();
 	static void CPPStyleStringsExample();
@@ -22,7 +22,7 @@ private:
 class Section11
 {
 public:
-	static void Execute();
+	static void Exec();
 
 private:
 	static void GetEvenNumbersInRand(const int LineSeparator = 10, const int ModuloNumber = 2);

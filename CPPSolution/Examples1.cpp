@@ -6,8 +6,11 @@
 using namespace SharedTemplates;
 using namespace std;
 
+bool Section9::bIsChallengeFinished{false};
+std::vector<int> Section9::ChallengeNumbers{};
 
-void Section6::Execute()
+
+void Section6::Exec()
 {
 	cout << "~~~~~~~~~~~ Section 6 ~~~~~~~~~~~~" << endl;
 	CalculateRoomPrice();
@@ -92,7 +95,7 @@ void Section7::PrintArraysAndVectors()
 	Print2DVectorElems(TwoDimensionalVector);
 }
 
-void Section8::Execute()
+void Section8::Exec()
 {
 	cout << "~~~~~~~~~~~ Section 8 ~~~~~~~~~~~~" << endl;
 	PrePostIncrement();
@@ -257,49 +260,46 @@ void Section8::ChangeChallange()
 	const int FiftyDollarsToCentRate = DollarToCentRate * 50;;
 	const int HundredDollarsToCentRate = DollarToCentRate * 100;
 	
-	int HundredDollarsToGive {0};
-	int FiftyDollarsToGive {0};
-	int TwentyDollarsToGive {0};
-	int TenDollarsToGive {0};
-	int FiveDollarsToGive{0};
-	int DollarToGive {0};
-	int QuartersToGive {0};
-	int DimesToGive {0};
-	int NickelsToGive {0};
-	int PenniesToGive {0};
+	int HundredDollarsToReturn {0};
+	int FiftyDollarsToReturn {0};
+	int TwentyDollarsToReturn {0};
+	int TenDollarsToReturn {0};
+	int FiveDollarsToReturn{0};
+	int DollarToReturn {0};
+	int QuartersToReturn {0};
+	int DimesToReturn {0};
+	int NickelsToReturn {0};
+	int PenniesToReturn {0};
 
-	HundredDollarsToGive = ChangeWithRate(MoneyToProcess, HundredDollarsToCentRate);
-	FiftyDollarsToGive = ChangeWithRate(MoneyToProcess, FiftyDollarsToCentRate);
-	TwentyDollarsToGive = ChangeWithRate(MoneyToProcess, TwentyDollarsToCentRate);
-	TenDollarsToGive = ChangeWithRate(MoneyToProcess, TenDollarsToCentRate);
-	FiveDollarsToGive = ChangeWithRate(MoneyToProcess, FiveDollarsToCentRate);
-	DollarToGive = ChangeWithRate(MoneyToProcess, DollarToCentRate);
-	QuartersToGive = ChangeWithRate(MoneyToProcess, QuarterToCentRage);
-	DimesToGive = ChangeWithRate(MoneyToProcess, DimesToCentRate);
-	NickelsToGive = ChangeWithRate(MoneyToProcess, NickelsToCentRate);
-	PenniesToGive = MoneyToProcess;
+	HundredDollarsToReturn = ChangeWithRate(MoneyToProcess, HundredDollarsToCentRate);
+	FiftyDollarsToReturn = ChangeWithRate(MoneyToProcess, FiftyDollarsToCentRate);
+	TwentyDollarsToReturn = ChangeWithRate(MoneyToProcess, TwentyDollarsToCentRate);
+	TenDollarsToReturn = ChangeWithRate(MoneyToProcess, TenDollarsToCentRate);
+	FiveDollarsToReturn = ChangeWithRate(MoneyToProcess, FiveDollarsToCentRate);
+	DollarToReturn = ChangeWithRate(MoneyToProcess, DollarToCentRate);
+	QuartersToReturn = ChangeWithRate(MoneyToProcess, QuarterToCentRage);
+	DimesToReturn = ChangeWithRate(MoneyToProcess, DimesToCentRate);
+	NickelsToReturn = ChangeWithRate(MoneyToProcess, NickelsToCentRate);
+	PenniesToReturn = MoneyToProcess;
 
 	cout << "---" << endl;
 	cout << "Banknotes: " << endl;
-	cout << "Hundred Dollars to give: " << HundredDollarsToGive << endl;
-	cout << "Fifty Dollars to give: " << FiftyDollarsToGive << endl;
-	cout << "Twenty Dollars to give: " << TwentyDollarsToGive << endl;
-	cout << "Ten Dollars to give: " << TenDollarsToGive << endl;
-	cout << "Five Dollars to give: " << FiveDollarsToGive << endl;
-	cout << "Dollars to give: " << DollarToGive << endl;
+	cout << "Hundred Dollars to return: " << HundredDollarsToReturn << endl;
+	cout << "Fifty Dollars to return: " << FiftyDollarsToReturn << endl;
+	cout << "Twenty Dollars to return: " << TwentyDollarsToReturn << endl;
+	cout << "Ten Dollars to return: " << TenDollarsToReturn << endl;
+	cout << "Five Dollars to return: " << FiveDollarsToReturn << endl;
+	cout << "Dollars to return: " << DollarToReturn << endl;
 
 	cout << "---" << endl;
 	cout << "Coins: " << endl;
-	cout << "Quarters to give: " << QuartersToGive << endl;
-	cout << "Dimes to give: " << DimesToGive << endl;
-	cout << "Nickels to give: " << NickelsToGive << endl;
-	cout << "Pennies to give: " << PenniesToGive << endl;
+	cout << "Quarters to return: " << QuartersToReturn << endl;
+	cout << "Dimes to return: " << DimesToReturn << endl;
+	cout << "Nickels to return: " << NickelsToReturn << endl;
+	cout << "Pennies to return: " << PenniesToReturn << endl;
 
 }
 
-/* as far as i know Int by ref is bad, but i want to change the InMoneyInCents in this function. 
-Is there something that could be done better? only thing i fugured out is to make it a global variable but I'm not sure which one is better to have
-*/
 int Section8::ChangeWithRate(int& CurrentCents, const int ExchangeRate)
 {
 	const int MoneyToReturn = CurrentCents / ExchangeRate;
@@ -307,8 +307,7 @@ int Section8::ChangeWithRate(int& CurrentCents, const int ExchangeRate)
 	return MoneyToReturn;
 }
 
-
-void Section9::Execute()
+void Section9::Exec()
 {
 	cout << "~~~~~~~~~~~ Section 9 ~~~~~~~~~~~~" << endl;
 	IfPlayground();
@@ -644,7 +643,7 @@ void Section9::ChallengeDisplayMean()
 	size_t ElementsCount{0};
 	ElementsCount = ChallengeNumbers.size();
 
-	bool bIsVectorEmpty = ElementsCount == 0;
+	const bool bIsVectorEmpty = ElementsCount == 0;
 	if (bIsVectorEmpty)
 	{
 		cout << "Vector of numbers is empty, going back to menu. " << endl;

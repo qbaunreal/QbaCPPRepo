@@ -132,11 +132,15 @@
     <ClCompile Include="CPPSolution.cpp" />
     <ClCompile Include="Examples1.cpp" />
     <ClCompile Include="Examples2.cpp" />
+    <ClCompile Include="Examples3.cpp" />
+    <ClCompile Include="Examples4.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CPPSolution.h" />
     <ClInclude Include="Examples1.h" />
     <ClInclude Include="Examples2.h" />
+    <ClInclude Include="Examples3.h" />
+    <ClInclude Include="Examples4.h" />
     <ClInclude Include="SharedTemplates.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
