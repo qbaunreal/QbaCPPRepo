@@ -5,6 +5,7 @@
 #include "Examples2.h"
 #include "Examples3.h"
 #include "Examples4.h"
+#include "Examples5.h"
 #include "SharedTemplates.h"
 
 using namespace SharedTemplates;
@@ -19,7 +20,7 @@ int main()
 void MainNamespace::SelectSection()
 {
 	char Selection{'.'};
-	const char AvailableChoices[]{ 'x','X','a','A','b','B','c','C','d','D', 'e','E', 'f','F', 'g','G','h', 'H', 'i', 'I', 'j', 'J', 'k', 'K'};
+	const char AvailableChoices[]{ 'x','X','a','A','b','B','c','C','d','D', 'e','E', 'f','F', 'g','G','h', 'H', 'i', 'I', 'j', 'J', 'k', 'K', 'l', 'L', 'M', 'm', 'o', 'O'};
 
 	bool bUserSelectedProperChar{false};
 	do
@@ -37,6 +38,9 @@ void MainNamespace::SelectSection()
 		cout << "i. Section13 - OOP - Classes and Objects" << endl;
 		cout << "j. Section14 - Operator Overloading" << endl;
 		cout << "k. Section15 - Inheritance" << endl;
+		cout << "l. Section16 - Polymorphism" << endl;
+		cout << "m. Section17 - Smart pointers" << endl;
+		cout << "o. Section18 - Exception Handling" << endl;
 		
 		cin >> Selection;
 		bUserSelectedProperChar = ArrayContainsItem(Selection, AvailableChoices);
@@ -59,6 +63,11 @@ void MainNamespace::SelectSection()
 		Section11::Exec();
 		ConstructFromClass<Section12>();
 		ConstructFromClass<Section13>();
+		Section14::Exec();
+		Section15::Exec();
+		Section16::Exec();
+		Section17::Exec();
+		Section18::Exec();
 		break;
 	case 'a':
 	case 'A':
@@ -102,6 +111,15 @@ void MainNamespace::SelectSection()
 	case'k':
 	case'K':
 		Section15::Exec();
+	case'l':
+	case'L':
+		Section16::Exec();
+	case'm':
+	case'M':
+		Section17::Exec();
+	case'o':
+	case'O':
+		Section18::Exec();
 	default:
 		break;
 	}
