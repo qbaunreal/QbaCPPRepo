@@ -54,14 +54,14 @@ void Section13_SubClass::UpdateExampleInt1(int NewValue)
 
 void Section13::ConstrDestrTest() const
 {
-	ConstructorDestructor* ConstrDestrObj = new ConstructorDestructor(20, 30, 50);
+	const ConstructorDestructor* ConstrDestrObj = new ConstructorDestructor(20, 30, 50);
 	delete ConstrDestrObj;
 }
 
 void Section13::CopyClassConstr() const
 {
 	cout << "This example shows how to implement a copy contructor " << endl;
-	ConstructorDestructor ConstrDestr {10};
+	const ConstructorDestructor ConstrDestr {10};
 	PassObjectByValue(ConstrDestr);
 	PassObjectByValue(ConstrDestr);
 	PassObjectByValue(ConstrDestr);
@@ -125,7 +125,7 @@ void Section13_ShallowVSDeepExample::Exec()
 	ShallowCopyObj2.SetPtrValue(1000);*/
 
 	cout << "Deep: " << endl;
-	Section13_DeepCopy DeepCopyObj{ 24 };
+	const Section13_DeepCopy DeepCopyObj{ 24 };
 	DisplayNumberCopyObj(DeepCopyObj);
 	Section13_DeepCopy DeepCopyObj2{ DeepCopyObj };
 	DeepCopyObj2.SetPtrValue(213400);
@@ -355,7 +355,7 @@ Section13_Movie* Section13_Movies::FindMovie(const std::string& MovieName)
 void Section13_Movies::DisplayAllMovies()
 {
 	cout << "Your movies are: " << endl;
-	for (Section13_Movie* Movie : MoviesCollection)
+	for (const Section13_Movie* Movie : MoviesCollection)
 	{
 		cout << "~~~~~~ "<< endl;
 		cout << "Name: " << Movie->GetMovieName() << endl;
@@ -420,11 +420,11 @@ void Section14_OverloadingStringExample::Exec()
 	Section14_MyString AdditionLowerString = -(Jan2 + EmptyString);
 	AdditionLowerString.Display();
 	
-	cout << "Now pass your string: " << endl;
+	/*cout << "Now pass your string: " << endl;
 	Section14_MyString UserInputString;
 
-	//cin >> UserInputString;
-	//cout << "Your string is: " << UserInputString;
+	cin >> UserInputString;
+	cout << "Your string is: " << UserInputString;*/
 }
 
 Section14_MyString::Section14_MyString()

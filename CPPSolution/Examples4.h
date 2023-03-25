@@ -107,10 +107,10 @@ class S16_Acccount
 {
 public:
 	virtual ~S16_Acccount();
-	virtual void Withdraw();
+	virtual void Withdraw() const;
 	static void WithdrawbyRef(const S16_Acccount& Account);
-	virtual void OverridableFunction();
-	void NonVirtualFunction();
+	virtual void OverridableFunction() const;
+	void NonVirtualFunction() const;
 };
 
 
@@ -118,23 +118,23 @@ class S16_SubAccountA : public S16_Acccount
 {
 public:
 	~S16_SubAccountA();
-	virtual void Withdraw();
+	virtual void Withdraw() const;
 	static void WithdrawbyRef(const S16_Acccount& Account);
-	virtual void OverridableFunction() override;
-	void NonVirtualFunction();
+	virtual void OverridableFunction() const override;
+	void NonVirtualFunction() const;
 };
 
 class S16_SubAccountB : public S16_Acccount
 {
 public:
-	virtual void Withdraw();
+	virtual void Withdraw() const;
 };
 
 
 class S16_SubAccountC : public S16_SubAccountA
 {
 public:
-	virtual void OverridableFunction() final;
+	virtual void OverridableFunction() const final;
 };
 
 class S16_SubAccountD final : public S16_SubAccountC

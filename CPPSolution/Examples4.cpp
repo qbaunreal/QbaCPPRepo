@@ -163,13 +163,13 @@ void S15_Derived::PrivateVirtualFunction()
 
 void S15_CopyMoveOperator::Exec()
 {
-	S15_CopyMove_Base* S15_CopyMove_BaseObj = new S15_CopyMove_Base{5};
+	const S15_CopyMove_Base* const S15_CopyMove_BaseObj = new S15_CopyMove_Base{5};
 	delete S15_CopyMove_BaseObj;
 	
-	S15_CopyMove_Derived* S15_CopyMove_DerivedObj = new S15_CopyMove_Derived{15};
+	const S15_CopyMove_Derived* const S15_CopyMove_DerivedObj = new S15_CopyMove_Derived{15};
 	delete S15_CopyMove_DerivedObj;
 
-	S15_CopyMove_Derived LValueObj {2137};
+	const S15_CopyMove_Derived LValueObj {2137};
 	S15_CopyMove_Derived AnotherDerivedObj = LValueObj;
 	AnotherDerivedObj = 15;
 }
@@ -283,29 +283,29 @@ void Section16::Exec()
 
 void Section16_AccountExample::Exec()
 {
-	S16_Acccount Account;
+	const S16_Acccount Account;
 	cout << "Calling account instances functions " << endl;
 	Account.Withdraw();
 	Account.NonVirtualFunction();
 
-	S16_SubAccountA SubAccountA;
+	const S16_SubAccountA SubAccountA;
 	cout << "Calling Subaccount instances functions " << endl;
 	SubAccountA.Withdraw();
 	SubAccountA.NonVirtualFunction();
 
 	cout << "Calling account pointer that points to new SubAccount" << endl;
-	S16_Acccount* SubAccountAPtr = new S16_SubAccountA();
+	const S16_Acccount* SubAccountAPtr = new S16_SubAccountA();
 	SubAccountAPtr->NonVirtualFunction();
 	SubAccountAPtr->Withdraw();
 	delete SubAccountAPtr;
 
-	S16_Acccount* SubAccountBPtr = new S16_SubAccountB();
+	const S16_Acccount* SubAccountBPtr = new S16_SubAccountB();
 	SubAccountBPtr->Withdraw();
 	delete SubAccountBPtr;
 
 
-	S16_SubAccountA SomeAccount{};
-	S16_Acccount& RefToSomeAccount = SomeAccount;
+	const S16_SubAccountA SomeAccount{};
+	const S16_Acccount& RefToSomeAccount = SomeAccount;
 
 	RefToSomeAccount.Withdraw();
 
@@ -321,7 +321,7 @@ S16_Acccount::~S16_Acccount()
 	cout << "Virtual Destructor called on Account" << endl;
 }
 
-void S16_Acccount::Withdraw()
+void S16_Acccount::Withdraw() const
 {
 	cout << "Virtual Function called on Account" << endl;
 }
@@ -331,11 +331,12 @@ void S16_Acccount::WithdrawbyRef(const S16_Acccount& Account)
 	cout << "This is also dynamically bound" << endl;
 }
 
-void S16_Acccount::OverridableFunction()
+void S16_Acccount::OverridableFunction() const
 {
+	cout << "Can be overrided" << endl;
 }
 
-void S16_Acccount::NonVirtualFunction()
+void S16_Acccount::NonVirtualFunction() const
 {
 	cout << "Function called on Account" << endl;
 }
@@ -345,7 +346,7 @@ S16_SubAccountA::~S16_SubAccountA()
 	cout << "Desrtucting subaccountA" << endl;
 }
 
-void S16_SubAccountA::Withdraw()
+void S16_SubAccountA::Withdraw() const
 {
 	cout << "Withdrawing money from account A" << endl;
 }
@@ -355,22 +356,22 @@ void S16_SubAccountA::WithdrawbyRef(const S16_Acccount& Account)
 	cout << "Withdraw called on subaccount" << endl;
 }
 
-void S16_SubAccountA::OverridableFunction()
+void S16_SubAccountA::OverridableFunction() const
 {
 	cout << "Withdraw called on S16_SubAccountA" << endl;
 }
 
-void S16_SubAccountA::NonVirtualFunction()
+void S16_SubAccountA::NonVirtualFunction() const
 {
 	cout << "Function called on SubAccountA" << endl;
 }
 
-void S16_SubAccountB::Withdraw()
+void S16_SubAccountB::Withdraw() const
 {
 	cout << "Withdrawing money from account B. Can have different logic here" << endl;
 }
 
-void S16_SubAccountC::OverridableFunction()
+void S16_SubAccountC::OverridableFunction() const
 {
 	cout << "Withdraw called on S16_SubAccountC" << endl;
 }
@@ -406,7 +407,7 @@ void S17_SmartPtrs::UniquePtrExample()
 
 	//no need to delete it
 
-	unique_ptr<int> UniquePtr2 = make_unique<int>(100); // another way of creating uniqptr, more efficient since c++14
+	const unique_ptr<int> UniquePtr2 = make_unique<int>(100); // another way of creating uniqptr, more efficient since c++14
 }
 
 void S17_SmartPtrs::SharedPtrExample()
@@ -414,7 +415,7 @@ void S17_SmartPtrs::SharedPtrExample()
 	vector <shared_ptr<int>> SharedPtrVector;
 	shared_ptr<int> SharedPtr = make_shared<int>();
 	shared_ptr<int> SharedPtr2{ SharedPtr };
-	shared_ptr<int> SharedPtr3{ SharedPtr2 };
+	const shared_ptr<int> SharedPtr3{ SharedPtr2 };
 
 	cout << "SharedPtr count: " << SharedPtr.use_count() << endl;
 	cout << "SharedPtr2 count: " << SharedPtr2.use_count() << endl;
@@ -437,7 +438,7 @@ void S17_SmartPtrs::SharedPtrExample()
 
 void Deleter(S17_WeakerClass* RawPtr) 
 {
-	cout << "Deleter function has been called" << endl;
+	cout << "Deleter function pointer has been called" << endl;
 };
 
 void S17_SmartPtrs::WeakPtrExample()

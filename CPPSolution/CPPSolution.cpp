@@ -20,7 +20,7 @@ int main()
 void MainNamespace::SelectSection()
 {
 	char Selection{'.'};
-	const char AvailableChoices[]{ 'x','X','a','A','b','B','c','C','d','D', 'e','E', 'f','F', 'g','G','h', 'H', 'i', 'I', 'j', 'J', 'k', 'K', 'l', 'L', 'M', 'm', 'o', 'O'};
+	const char AvailableChoices[]{ 'x','X','a','A','b','B','c','C','d','D', 'e','E', 'f','F', 'g','G','h', 'H', 'i', 'I', 'j', 'J', 'k', 'K', 'l', 'L', 'M', 'm', 'o', 'O', 'p', 'P', 'r', 'R', 'u', 'U', 'z', 'Z'};
 
 	bool bUserSelectedProperChar{false};
 	do
@@ -41,6 +41,10 @@ void MainNamespace::SelectSection()
 		cout << "l. Section16 - Polymorphism" << endl;
 		cout << "m. Section17 - Smart pointers" << endl;
 		cout << "o. Section18 - Exception Handling" << endl;
+		cout << "p. Section19 - I/O and Streams" << endl;
+		cout << "r. Section20 - Standard Template Library (STL)" << endl;
+		cout << "u. Section21 - Lambdas" << endl;
+		cout << "z. Section22 - Enums" << endl;
 		
 		cin >> Selection;
 		bUserSelectedProperChar = ArrayContainsItem(Selection, AvailableChoices);
@@ -68,6 +72,9 @@ void MainNamespace::SelectSection()
 		Section16::Exec();
 		Section17::Exec();
 		Section18::Exec();
+		Section19::Exec();
+		Section20::Exec();
+		Section21::Exec();
 		break;
 	case 'a':
 	case 'A':
@@ -108,18 +115,38 @@ void MainNamespace::SelectSection()
 	case'j':
 	case'J':
 		Section14::Exec();
+		break;
 	case'k':
 	case'K':
 		Section15::Exec();
+		break;
 	case'l':
 	case'L':
 		Section16::Exec();
+		break;
 	case'm':
 	case'M':
 		Section17::Exec();
+		break;
 	case'o':
 	case'O':
 		Section18::Exec();
+		break;
+	case'p':
+	case'P':
+		Section19::Exec();
+		break;
+	case'r':
+	case'R':
+		Section20::Exec();
+		break;
+	case'u':
+	case'U':
+		Section21::Exec();
+		break;
+	case'z':
+	case'Z':
+		break;
 	default:
 		break;
 	}
